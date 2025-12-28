@@ -21,28 +21,37 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden">
-      {/* Motif de fond animé */}
+    <footer className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 text-white overflow-hidden">
+      {/* Motif de fond animé bleu */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
-          className="absolute inset-0"
+          className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"
           animate={{
-            backgroundImage: [
-              'radial-gradient(circle at 0% 0%, white 1px, transparent 1px)',
-              'radial-gradient(circle at 100% 100%, white 1px, transparent 1px)',
-              'radial-gradient(circle at 0% 0%, white 1px, transparent 1px)',
-            ],
+            x: [0, 100, 0],
+            y: [0, 50, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 20,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div
+          className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{
+            duration: 25,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         />
       </div>
 
-      <div className="container mx-auto px-6 py-12 relative z-10">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <div className="container mx-auto px-6 py-16 relative z-10">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Colonne 1 - Logo et description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -52,14 +61,14 @@ export default function Footer() {
           >
             <Link href="/">
               <motion.h3
-                className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4"
+                className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent mb-4"
                 whileHover={{ scale: 1.05 }}
               >
                 Enzo.rc
               </motion.h3>
             </Link>
-            <p className="text-gray-300 leading-relaxed">
-              Créateur d&apos;expériences web modernes. Passionné par le développement et le partage de connaissances.
+            <p className="text-blue-200 leading-relaxed">
+              Créateur d&apos;expériences web modernes. Passionné par le développement et l&apos;innovation.
             </p>
           </motion.div>
 
@@ -70,16 +79,16 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
-            <ul className="space-y-2">
+            <h4 className="text-xl font-bold mb-6 text-blue-200">Navigation</h4>
+            <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href}>
                     <motion.span
-                      className="text-gray-300 hover:text-white transition-colors cursor-pointer inline-block"
-                      whileHover={{ x: 5 }}
+                      className="text-blue-300 hover:text-white transition-colors cursor-pointer inline-block"
+                      whileHover={{ x: 8 }}
                     >
-                      {link.name}
+                      → {link.name}
                     </motion.span>
                   </Link>
                 </li>
@@ -94,14 +103,14 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="text-lg font-semibold mb-4">Suivez-moi</h4>
+            <h4 className="text-xl font-bold mb-6 text-blue-200">Suivez-moi</h4>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
-                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  className="w-12 h-12 rounded-full bg-blue-700/50 backdrop-blur-sm flex items-center justify-center hover:bg-blue-600 transition-colors border border-blue-500/30"
+                  whileHover={{ scale: 1.15, rotate: 360 }}
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -110,7 +119,7 @@ export default function Footer() {
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  <span className="text-sm font-semibold">{social.name[0]}</span>
+                  <span className="text-lg font-bold text-blue-100">{social.name[0]}</span>
                 </motion.a>
               ))}
             </div>
@@ -119,7 +128,7 @@ export default function Footer() {
 
         {/* Séparateur */}
         <motion.div
-          className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8"
+          className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent mb-8"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
@@ -128,7 +137,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <motion.div
-          className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-300"
+          className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-200"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -138,10 +147,10 @@ export default function Footer() {
             © {currentYear} Enzo.rc — Créé avec
             <motion.span
               animate={{
-                scale: [1, 1.2, 1],
+                scale: [1, 1.3, 1],
               }}
               transition={{
-                duration: 1,
+                duration: 1.5,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}

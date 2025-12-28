@@ -50,7 +50,11 @@ export default function AnimatedBackground() {
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+        // Gradient bleu pour les particules
+        const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+        gradient.addColorStop(0, `rgba(96, 165, 250, ${this.opacity})`);
+        gradient.addColorStop(1, `rgba(59, 130, 246, ${this.opacity * 0.3})`);
+        ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();

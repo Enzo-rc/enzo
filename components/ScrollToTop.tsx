@@ -35,8 +35,8 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl hover:shadow-3xl transition-shadow"
-          whileHover={{ scale: 1.1, rotate: 360 }}
+          className="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-blue-lg hover:shadow-blue transition-shadow"
+          whileHover={{ scale: 1.15, rotate: 360 }}
           whileTap={{ scale: 0.9 }}
         >
           <HiArrowUp className="text-2xl" />

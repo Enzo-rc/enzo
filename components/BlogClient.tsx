@@ -21,12 +21,12 @@ interface BlogClientProps {
 
 export default function BlogClient({ posts }: BlogClientProps) {
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      {/* En-tête de page avec effet parallax */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Gradient animé */}
+    <div className="min-h-screen pt-24 pb-16 bg-gradient-to-b from-blue-50 to-white">
+      {/* En-tête de page bleu */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Gradient animé bleu */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"
+          className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800"
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
           }}
@@ -38,58 +38,46 @@ export default function BlogClient({ posts }: BlogClientProps) {
         />
         
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent" />
 
         <div className="container mx-auto px-6 relative z-10">
           <FadeIn direction="down">
             <AnimatedText
               text="Blog"
-              className="text-5xl md:text-6xl font-bold text-white mb-4 text-center"
+              className="text-6xl md:text-7xl font-bold text-white mb-6 text-center"
             />
           </FadeIn>
           
           <FadeIn delay={0.3} direction="up">
-            <p className="text-xl text-white/90 text-center max-w-2xl mx-auto">
+            <p className="text-2xl text-blue-100 text-center max-w-3xl mx-auto leading-relaxed">
               Découvrez mes articles, tutoriels et réflexions sur le développement web
             </p>
           </FadeIn>
 
-          {/* Barre de recherche visuelle (non fonctionnelle pour l'instant) */}
+          {/* Barre de recherche visuelle */}
           <FadeIn delay={0.5} direction="up">
             <motion.div
-              className="max-w-xl mx-auto mt-8"
+              className="max-w-2xl mx-auto mt-10"
               whileHover={{ scale: 1.02 }}
             >
               <div className="relative">
-                <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" />
+                <HiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-blue-400 text-2xl" />
                 <input
                   type="text"
                   placeholder="Rechercher un article..."
-                  className="w-full pl-12 pr-4 py-4 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 transition-all"
+                  className="w-full pl-16 pr-6 py-5 rounded-2xl bg-white/95 backdrop-blur-sm border-2 border-blue-300/50 shadow-blue-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 transition-all text-blue-900 placeholder-blue-400 text-lg font-medium"
                 />
               </div>
             </motion.div>
           </FadeIn>
         </div>
 
-        {/* Formes décoratives */}
+        {/* Formes décoratives bleues */}
         <motion.div
-          className="absolute top-10 left-10 w-32 h-32 rounded-full bg-white/10 backdrop-blur-sm"
+          className="absolute top-10 left-10 w-32 h-32 rounded-full bg-blue-400/20 backdrop-blur-sm"
           animate={{
-            y: [0, 30, 0],
+            y: [0, 40, 0],
             rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-white/10 backdrop-blur-sm"
-          animate={{
-            y: [0, -30, 0],
-            rotate: [360, 180, 0],
           }}
           transition={{
             duration: 12,
@@ -97,19 +85,31 @@ export default function BlogClient({ posts }: BlogClientProps) {
             ease: 'easeInOut',
           }}
         />
+        <motion.div
+          className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-blue-300/20 backdrop-blur-sm"
+          animate={{
+            y: [0, -40, 0],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
       </section>
 
       {/* Liste des articles */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           {posts.length > 0 ? (
             <>
               <FadeIn direction="up">
                 <motion.div
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold mb-12"
-                  whileHover={{ scale: 1.05 }}
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-100 text-blue-700 font-bold mb-16 shadow-lg"
+                  whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)' }}
                 >
-                  <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
+                  <span className="w-3 h-3 bg-blue-600 rounded-full animate-pulse" />
                   {posts.length} article{posts.length > 1 ? 's' : ''} publié{posts.length > 1 ? 's' : ''}
                 </motion.div>
               </FadeIn>
@@ -118,7 +118,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
                 {posts.map((post, index) => (
                   <motion.div
                     key={post.slug}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
@@ -136,25 +136,26 @@ export default function BlogClient({ posts }: BlogClientProps) {
             </>
           ) : (
             <ScaleIn>
-              <div className="text-center py-20 bg-white/80 backdrop-blur-sm rounded-3xl border border-gray-100 shadow-xl max-w-2xl mx-auto">
+              <div className="text-center py-24 bg-white rounded-3xl border-2 border-blue-200 shadow-blue max-w-2xl mx-auto">
                 <motion.div
-                  className="text-7xl mb-6"
+                  className="text-8xl mb-8"
                   animate={{
-                    rotate: [0, 10, -10, 0],
+                    rotate: [0, 15, -15, 0],
+                    scale: [1, 1.1, 1],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
                 >
                   📝
                 </motion.div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                <h2 className="text-4xl font-bold text-blue-900 mb-4">
                   Aucun article pour le moment
                 </h2>
-                <p className="text-gray-600 text-lg">
-                  Le premier article arrive bientôt ! Revenez plus tard.
+                <p className="text-blue-600 text-xl">
+                  Le premier article arrive bientôt !
                 </p>
               </div>
             </ScaleIn>
@@ -164,4 +165,3 @@ export default function BlogClient({ posts }: BlogClientProps) {
     </div>
   );
 }
-
