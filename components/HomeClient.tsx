@@ -108,11 +108,13 @@ export default function HomeClient({ posts }: HomeClientProps) {
             <FadeIn delay={0.3}>
               <motion.h1
                 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700 bg-clip-text text-transparent leading-tight"
+                style={{
+                  backgroundSize: '200% 200%',
+                }}
                 animate={{
                   backgroundPosition: ['0%', '100%', '0%'],
                 }}
                 transition={{
-                  backgroundSize: '200% 200%',
                   duration: 8,
                   repeat: Infinity,
                   ease: 'linear',
